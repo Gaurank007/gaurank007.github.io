@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A visual overview of dark matter and dark energy, their evidence, technologies, standards, ethics, and research landscape.">
+<title>Dark Matter and Dark Energy – Poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0a0610;
+    color: #f3f4f6;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* The high-resolution canvas is scaled as a single unit to fit the viewport. */
+  .poster-container {
+    width: 14043px;
+    height: 9933px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    overflow: hidden;
+    transform: translate(-50%, -50%) scale(var(--poster-scale, 1));
+    transform-origin: center;
+    background:
+      radial-gradient(1.5px 1.5px at 5% 12%, #fff6ff, transparent),
+      radial-gradient(1.2px 1.2px at 15% 68%, #d879ff, transparent),
+      radial-gradient(1.8px 1.8px at 28% 35%, #fff6ff, transparent),
+      radial-gradient(1.2px 1.2px at 38% 85%, #f070c8, transparent),
+      radial-gradient(1.5px 1.5px at 48% 20%, #ffc857, transparent),
+      radial-gradient(1.2px 1.2px at 58% 62%, #fff6ff, transparent),
+      radial-gradient(1.8px 1.8px at 68% 10%, #70f0df, transparent),
+      radial-gradient(1.2px 1.2px at 78% 75%, #f070c8, transparent),
+      radial-gradient(1.5px 1.5px at 88% 30%, #fff6ff, transparent),
+      radial-gradient(1.2px 1.2px at 95% 82%, #d8ff74, transparent),
+      radial-gradient(ellipse at 50% 48%, rgba(216, 255, 116, 0.16), transparent 15%),
+      radial-gradient(ellipse at 8% 52%, rgba(49, 210, 202, 0.14), transparent 38%),
+      radial-gradient(ellipse at 90% 0%, rgba(192, 84, 230, 0.3), transparent 50%),
+      radial-gradient(ellipse at 10% 100%, rgba(111, 37, 132, 0.38), transparent 50%),
+      radial-gradient(ellipse at 92% 82%, rgba(36, 151, 167, 0.16), transparent 40%),
+      radial-gradient(ellipse at 100% 100%, rgba(240, 112, 200, 0.16), transparent 45%),
+      radial-gradient(ellipse at 0% 0%, rgba(62, 20, 88, 0.48), transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(20, 10, 30, 0.96), #0a0610);
+  }
+
+  .poster-content {
+    width: 1920px;
+    height: 1358.0488px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+    transform: scale(7.3140625);
+    transform-origin: top left;
+  }
+
+  /* Glassmorphism Card Style */
+  .card {
+    background: rgba(19, 12, 31, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(112, 240, 223, 0.22);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.35), inset 0 0 1px 1px rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Card Header styling */
+  .card-header {
+    background: linear-gradient(90deg, rgba(52, 18, 76, 0.98), rgba(111, 37, 132, 0.94) 70%, rgba(24, 83, 91, 0.9));
+    border-bottom: 1px solid rgba(112, 240, 223, 0.32);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #e9c7ff;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-title::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 18px;
+    background: #70f0df;
+    border-radius: 2px;
+    box-shadow: 0 0 8px #70f0df;
+  }
+
+  /* Body text styling */
+  .card-body {
+    min-height: 0;
+    padding: 12px 16px;
+    color: #e2e8f0;
+    font-size: 22px;
+    line-height: 1.45;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  /* Key highlighted terms */
+  .dm-tag { color: #d879ff; font-weight: 700; }
+  .de-tag { color: #ffc857; font-weight: 700; }
+  .cy-tag { color: #70f0df; font-weight: 700; }
+
+  /* Custom Bullet Points */
+  .custom-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+    height: 100%;
+  }
+
+  .custom-list li {
+    position: relative;
+    padding-left: 16px;
+  }
+
+  .custom-list li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: #70f0df;
+    font-size: 14px;
+  }
+
+  /* Patent Item Cards */
+  .patent-card {
+    border-left: 3px solid #ffc857;
+    background: rgba(44, 23, 58, 0.78);
+    border-radius: 0 6px 6px 0;
+    padding: 7px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .flex { display: flex; }
+  .grid { display: grid; }
+  .flex-row { flex-direction: row; }
+  .flex-col { flex-direction: column; }
+  .flex-1 { flex: 1 1 0%; }
+  .flex-shrink-0 { flex-shrink: 0; }
+  .items-center { align-items: center; }
+  .justify-between { justify-content: space-between; }
+  .justify-center { justify-content: center; }
+  .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .gap-2 { gap: 8px; }
+  .gap-3 { gap: 12px; }
+  .h-full { height: 100%; }
+  .h-7 { height: 28px; }
+  .min-h-0 { min-height: 0; }
+  .overflow-hidden { overflow: hidden; }
+  .overflow-visible { overflow: visible; }
+  .px-1 { padding-inline: 4px; }
+  .px-2\.5 { padding-inline: 10px; }
+  .px-7 { padding-inline: 28px; }
+  .py-1 { padding-block: 4px; }
+  .py-2 { padding-block: 8px; }
+  .mt-0\.5 { margin-top: 2px; }
+  .mb-0\.5 { margin-bottom: 2px; }
+  .mb-1 { margin-bottom: 4px; }
+  .rounded { border-radius: 4px; }
+  .border { border: 1px solid #e5e7eb; }
+  .shadow-inner { box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 5%); }
+  .italic { font-style: italic; }
+  .font-light { font-weight: 300; }
+  .font-normal { font-weight: 400; }
+  .font-semibold { font-weight: 600; }
+  .font-bold { font-weight: 700; }
+  .font-black { font-weight: 900; }
+  .tracking-tight { letter-spacing: -0.025em; }
+  .tracking-wide { letter-spacing: 0.025em; }
+  .leading-normal { line-height: 1.5; }
+  .text-white { color: #fff; }
+  .text-gray-900 { color: #111827; }
+  .text-purple-400 { color: #f070c8; }
+  .text-amber-300 { color: #ffe08a; }
+  .text-amber-400 { color: #ffc857; }
+  .text-slate-200 { color: #e2e8f0; }
+  .text-slate-300 { color: #cbd5e1; }
+  .text-slate-400 { color: #94a3b8; }
+  [class~="flex-[0.75]"] { flex: 0.75; }
+  [class~="flex-[0.8]"] { flex: 0.8; }
+  [class~="flex-[0.85]"] { flex: 0.85; }
+  [class~="flex-[0.95]"] { flex: 0.95; }
+  [class~="flex-[1.0]"] { flex: 1; }
+  [class~="flex-[1.25]"] { flex: 1.25; }
+  [class~="flex-[2.25]"] { flex: 2.25; }
+  [class~="text-[12px]"] { font-size: 18px; }
+  [class~="bg-[#cfb3ff]"] { background-color: #a944cf; }
+  [class~="bg-[#ffc069]"] { background-color: #ffc857; }
+  [class~="text-[#ffc069]"] { color: #ffc857; }
+  .bg-slate-200 { background-color: #e2e8f0; }
+  .bg-slate-800\/60 { background-color: rgba(55, 31, 70, 0.72); }
+  .border-slate-700\/60 { border-color: rgba(192, 132, 252, 0.28); }
+
+  .problem-statement .custom-list,
+  .technology-state .custom-list {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .problem-statement {
+    flex: 1.6;
+  }
+
+  .technology-state .custom-list {
+    font-size: 27px;
+    line-height: 1.2;
+  }
+
+  .references-card .custom-list {
+    font-size: 21px;
+    line-height: 1.2;
+    gap: 4px;
+  }
+
+  .references-card {
+    flex: 0.7;
+  }
+
+  .business-idea .card-body {
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 7px 14px;
+    font-size: 25px;
+    line-height: 1.2;
+  }
+
+  .business-idea-title {
+    padding: 6px 12px;
+    border-left: 4px solid #ffc857;
+    border-radius: 0 6px 6px 0;
+    background: rgba(255, 200, 87, 0.12);
+    color: #ffc857;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .business-idea-description {
+    padding-inline: 4px;
+  }
+
+  .business-idea-revenue {
+    padding: 5px 10px;
+    border: 1px solid rgba(255, 200, 87, 0.38);
+    border-radius: 6px;
+    background: rgba(30, 37, 55, 0.82);
+    color: #ffe08a;
+    font-size: 21px;
+    line-height: 1.2;
+  }
+
+  .business-idea-revenue strong {
+    color: #ffc857;
+  }
+
+  .patents-card .patent-card {
+    padding-block: 4px;
+  }
+
+  .patents-card .card-title {
+    font-size: 22px;
+    letter-spacing: 0.02em;
+  }
+
+  .patents-card .card-body {
+    gap: 5px;
+  }
+
+  .patents-card .patent-card > div:first-child,
+  .patents-card .patent-card > div:last-child {
+    font-size: 24px;
+  }
+
+  .patents-card .patent-card > div:last-child {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .patents-card {
+    flex: 2.85;
+  }
+
+  .standards-card {
+    flex: 0.83;
+  }
+
+  .standards-card .card-body {
+    gap: 6px;
+    padding: 8px 14px;
+  }
+
+  .standards-card .card-body > div {
+    font-size: 18px;
+  }
+
+  .standards-card .custom-list {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+    gap: 3px;
+    font-size: 19px;
+    line-height: 1.15;
+  }
+
+  .ethics-card {
+    flex: 0.77;
+  }
+
+  .ethics-card .custom-list {
+    font-size: 21px;
+    line-height: 1.2;
+    gap: 4px;
+  }
+
+  .startup-card {
+    flex: 0.9;
+  }
+
+  .startup-card .custom-list {
+    font-size: 23px;
+    line-height: 1.2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    svg animateTransform {
+      display: none;
+    }
+  }
+
+  @page {
+    size: 1189mm 841mm;
+    margin: 0;
+  }
+
+  @media print {
+    html,
+    body {
+      width: 1189mm;
+      height: 841mm;
+      overflow: hidden;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .poster-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: scale(0.32);
+      transform-origin: top left;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="poster-container">
+<div class="poster-content">
+
+  <!-- ==================== MAIN POSTER HEADER ==================== -->
+  <div class="card flex-row items-center justify-between px-7 py-2" style="height: 180px; flex: none; background: linear-gradient(100deg, rgba(16, 8, 24, 0.98), rgba(52, 18, 76, 0.96) 68%, rgba(24, 83, 91, 0.9)); border: 1px solid rgba(112, 240, 223, 0.4); box-shadow: 0 0 30px rgba(192, 84, 230, 0.2), 0 0 24px rgba(49, 210, 202, 0.12);">
+    <div class="flex flex-col justify-center">
+      <h1 class="font-black tracking-tight text-white flex items-center gap-2" style="font-size: 67px;">
+        Dark Matter <span class="text-purple-400 font-light">&amp;</span> Dark Energy
+      </h1>
+      <p class="text-amber-400 font-semibold tracking-wide mt-0.5" style="font-size: 30px;">
+        The 95% of the universe we cannot see
+      </p>
+      <p class="text-slate-400 italic mt-0.5" style="font-size: 22px;">
+        Dhairya Kasundra [26324013], Gaurank Kumar [26324014], Kapu Aarya Teja [26324016], Kheni Shikha Ashvinbhai [26324017]
+      </p>
+    </div>
+
+    <!-- Animated Cosmic Vector Diagram -->
+    <div class="flex items-center">
+      <svg width="504" height="108" viewBox="0 0 420 100" aria-hidden="true" class="overflow-visible">
+        <defs>
+          <radialGradient id="core"><stop offset="0%" stop-color="#f8ffd8"></stop><stop offset="40%" stop-color="#d8ff74"></stop><stop offset="100%" stop-color="rgba(216,255,116,0)"></stop></radialGradient>
+          <radialGradient id="halo"><stop offset="50%" stop-color="rgba(217,121,255,0)"></stop><stop offset="100%" stop-color="rgba(217,121,255,0.48)"></stop></radialGradient>
+        </defs>
+        <circle cx="210" cy="50" r="48" fill="url(#halo)"></circle>
+        <circle cx="210" cy="50" r="48" fill="none" stroke="#70f0df" stroke-width="1.5" stroke-dasharray="4 4"></circle>
+        
+        <g fill="none" stroke="#70f0df" stroke-width="2" opacity="0.9">
+          <animateTransform attributeName="transform" type="rotate" from="0 210 50" to="360 210 50" dur="20s" repeatCount="indefinite"></animateTransform>
+          <ellipse cx="210" cy="50" rx="42" ry="12" transform="rotate(-25 210 50)"></ellipse>
+          <ellipse cx="210" cy="50" rx="34" ry="9" transform="rotate(35 210 50)" stroke="#f070c8"></ellipse>
+          <ellipse cx="210" cy="50" rx="26" ry="7" transform="rotate(95 210 50)" stroke="#ffc857"></ellipse>
+        </g>
+        
+        <circle cx="210" cy="50" r="14" fill="url(#core)"></circle>
+        
+        <g stroke="#ffc857" stroke-width="2" stroke-linecap="round" fill="#ffc857">
+          <path d="M275 50 H325 M321 46 L329 50 L321 54"></path>
+          <path d="M145 50 H95 M99 46 L91 50 L99 54"></path>
+          <path d="M252 22 L286 4 M279 4 L288 2 L286 10"></path>
+          <path d="M168 78 L134 96 M141 96 L132 98 L134 90"></path>
+          <path d="M252 78 L286 96 M279 96 L288 98 L286 90"></path>
+          <path d="M168 22 L134 4 M141 4 L132 2 L134 10"></path>
+        </g>
+        <text x="335" y="54" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#ffc857">Expanding</text>
+        <text x="70" y="80" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#f070c8">Invisible Halo</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ==================== 3-COLUMN BALANCED GRID ==================== -->
+  <div class="grid grid-cols-3 gap-3 flex-1 min-h-0">
+
+    <!-- ==================== COLUMN 1 ==================== -->
+    <div class="flex flex-col gap-3 h-full min-h-0">
+      
+      <!-- Problem Statement -->
+      <div class="card problem-statement flex-[1.25] min-h-0">
+        <div class="card-header">
+          <div class="card-title">Problem Statement</div>
+        </div>
+        <div class="card-body">
+          <ul class="custom-list">
+            <li><b>Composition bar:</b> Dark Matter (27%) | Dark Energy (68%) | Visible Matter (5%)</li>
+            <li>Visible matter is only ~5% of the universe; the other ~95% is dark and unidentified.</li>
+            <li><b class="dm-tag">Dark matter:</b> invisible mass that pulls on galaxies. Evidence: flat rotation curves, lensing, Bullet Cluster, CMB.</li>
+            <li><b class="de-tag">Dark energy:</b> unknown driver of accelerating expansion (1998 supernovae, Nobel 2011).</li>
+            <li><b>Candidates:</b> WIMPs, axions, primordial black holes; Λ or “quintessence”.</li>
+            <li><b>Key question:</b> is dark energy constant, or does it change with time?</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- State of Technology -->
+      <div class="card technology-state flex-[1.0] min-h-0">
+        <div class="card-header">
+          <div class="card-title">State of Technology</div>
+        </div>
+        <div class="card-body">
+          <ul class="custom-list">
+            <li><b class="dm-tag">Direct detection:</b> liquid-xenon detectors (LZ, XENONnT, PandaX-4T) and axion searches (ADMX). No signal yet.</li>
+            <li><b class="de-tag">DESI:</b> 3D galaxy map hints (2-4σ) that dark energy may evolve.</li>
+            <li><b class="cy-tag">Euclid &amp; Rubin LSST:</b> 2026 surveys mapping dark matter via lensing.</li>
+            <li><b>Status:</b> research-stage; only spin-off hardware is commercial.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==================== COLUMN 2 (PATENTS + REFERENCES) ==================== -->
+    <div class="flex flex-col gap-3 h-full min-h-0">
+
+      <!-- Top 5 Patents -->
+      <div class="card patents-card flex-[2.25] min-h-0">
+        <div class="card-header">
+          <div class="card-title">Top 5 Patents by Citations (Derwent)</div>
+        </div>
+        <div class="card-body gap-2">
+          
+          <div class="patent-card">
+            <div class="flex justify-between items-center font-bold mb-0.5">
+              <span class="text-white">#1 WO2007011588A2 <span class="text-slate-400 font-normal">· cited by 6</span></span>
+            </div>
+            <div class="text-slate-200">
+              <b class="text-[#ffc069]">Novelty:</b> Black-hole axial-jet geometry to explain dark matter/energy.<br>
+              <b class="text-[#ffc069]">Claims:</b> Black-hole interior-boundary model; mass concentration gives apparent dark energy.
+            </div>
+          </div>
+
+          <div class="patent-card">
+            <div class="flex justify-between items-center font-bold mb-0.5">
+              <span class="text-white">#2 US9306527B1 <span class="text-slate-400 font-normal">· cited by 4</span></span>
+            </div>
+            <div class="text-slate-200">
+              <b class="text-[#ffc069]">Novelty:</b> Bifilar coils generate scalar-longitudinal waves.<br>
+              <b class="text-[#ffc069]">Claims:</b> Opposite-current alternating conductors; evaluates scalar potentials.
+            </div>
+          </div>
+
+          <div class="patent-card">
+            <div class="flex justify-between items-center font-bold mb-0.5">
+              <span class="text-white">#3 DE102013006563A1 <span class="text-slate-400 font-normal">· cited by 1</span></span>
+            </div>
+            <div class="text-slate-200">
+              <b class="text-[#ffc069]">Novelty:</b> Dark matter detection via antimatter annihilation in a magnetic trap.<br>
+              <b class="text-[#ffc069]">Claims:</b> Trapped antiparticles annihilate with dark matter; gamma detectors register it.
+            </div>
+          </div>
+
+          <div class="patent-card">
+            <div class="flex justify-between items-center font-bold mb-0.5">
+              <span class="text-white">#4 US20250244358A1 <span class="text-slate-400 font-normal">· cited by 1</span></span>
+            </div>
+            <div class="text-slate-200">
+              <b class="text-[#ffc069]">Novelty:</b> Stark-shift crystal probe senses tiny charge changes.<br>
+              <b class="text-[#ffc069]">Claims:</b> Locate lattice defects with a probe; measure Stark-shifted photoluminescence.
+            </div>
+          </div>
+
+          <div class="patent-card">
+            <div class="flex justify-between items-center font-bold mb-0.5">
+              <span class="text-white">#5 US20220371752A1 <span class="text-slate-400 font-normal">· cited by 0</span></span>
+            </div>
+            <div class="text-slate-200">
+              <b class="text-[#ffc069]">Novelty:</b> Propulsion that entrains ambient dark matter for thrust.<br>
+              <b class="text-[#ffc069]">Claims:</b> Waveguide vibrators create a dark-matter jet; group velocity near phase velocity.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- References -->
+      <div class="card references-card flex-[0.75] min-h-0">
+        <div class="card-header">
+          <div class="card-title">References</div>
+        </div>
+        <div class="card-body">
+          <ul class="custom-list">
+            <li>Planck Collaboration (2020). A&amp;A 641, A6.</li>
+            <li>Riess et al. (1998); Perlmutter et al. (1999).</li>
+            <li>DESI Collaboration (2025). DR2 BAO.</li>
+            <li>LZ Collaboration (2025). WIMP search.</li>
+            <li>Euclid Collaboration (2024-2026).</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==================== COLUMN 3 ==================== -->
+    <div class="flex flex-col gap-3 h-full min-h-0">
+
+      <!-- Relevant Standards -->
+      <div class="card standards-card flex-[0.8] min-h-0">
+        <div class="card-header">
+          <div class="card-title">Relevant Standards</div>
+        </div>
+        <div class="card-body">
+          <div class="text-[12px] text-slate-300 italic mb-1 bg-slate-800/60 px-2.5 py-1 rounded border border-slate-700/60 flex-shrink-0">
+            No standard covers dark matter itself; these support the infrastructure.
+          </div>
+          <ul class="custom-list">
+            <li><b>ISO 14644</b> (BIS-adopted): cleanrooms</li>
+            <li><b>ISO 9001:</b> quality management</li>
+            <li><b>ISO/IEC 17025:</b> calibration labs</li>
+            <li><b>ISO 21010:</b> cryogenic safety</li>
+            <li><b>FITS &amp; IVOA:</b> astronomical data formats</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ethical Considerations -->
+      <div class="card ethics-card flex-[0.85] min-h-0">
+        <div class="card-header">
+          <div class="card-title">Ethical Considerations</div>
+        </div>
+        <div class="card-body">
+          <ul class="custom-list">
+            <li><b>Funding:</b> public money for pure science vs. social needs</li>
+            <li><b>Land:</b> observatories on Indigenous sites (e.g. Mauna Kea)</li>
+            <li><b>Environment:</b> energy and xenon costs</li>
+            <li><b>Open science:</b> data sharing and fair credit</li>
+            <li><b>Communication:</b> 2-4σ “hints” are not discoveries</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Indian Company / Startup in the Field -->
+      <div class="card startup-card flex-[0.95] min-h-0">
+        <div class="card-header">
+          <div class="card-title">Indian Company / Startup in the Field</div>
+        </div>
+        <div class="card-body">
+          <ul class="custom-list">
+            <li>No Indian company works directly on this; research is institution-driven (TIFR, IUCAA, IIA, RRI, ISRO).</li>
+            <li><b>Opportunity:</b> startups in cryogenics, sensors and sky-survey data analysis.</li>
+            <li><b>Global supplier:</b> Hamamatsu (photomultiplier tubes for detectors like LZ).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Our Business Idea -->
+      <div class="card business-idea flex-[0.85] min-h-0" style="border: 1px solid rgba(255, 200, 87, 0.45); background: radial-gradient(circle at top right, rgba(255, 200, 87, 0.1), rgba(19, 12, 31, 0.96));">
+        <div class="card-header" style="background: linear-gradient(90deg, rgba(88, 29, 112, 0.96), rgba(52, 18, 76, 0.98) 70%, rgba(24, 83, 91, 0.92)); border-bottom-color: rgba(255, 200, 87, 0.42);">
+          <div class="card-title text-amber-300">Our Business Idea</div>
+        </div>
+        <div class="card-body">
+          <h3 class="business-idea-title">Low-cost muon detector kits for college labs</h3>
+          <p class="business-idea-description">
+            Scintillator + SiPM teaching kits with lab manuals and teacher workshops, using the same principle as dark matter detectors.
+          </p>
+          <p class="business-idea-revenue"><strong>Revenue:</strong> kits, lab packages, training.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+<script>
+  const poster = document.querySelector('.poster-container');
+  const fitPoster = () => {
+    poster.style.setProperty('--poster-scale', Math.min(
+      window.innerWidth / 14043,
+      window.innerHeight / 9933
+    ));
+  };
+
+  fitPoster();
+  window.addEventListener('resize', fitPoster);
+</script>
+
+</body>
+</html>
